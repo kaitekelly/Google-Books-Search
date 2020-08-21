@@ -1,14 +1,14 @@
 import React from 'react';
-import Books from "./"
+import Books from "./pages/Books";
+import Nav from "./components/Nav/index";
 
-import logo from './logo.svg';
 import './App.css';
 
 function App() {
   return (
     <div>
       <Nav />
-      <Books />
+      <Books /> 
     </div>
  );
 }

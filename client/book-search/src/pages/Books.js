@@ -4,11 +4,11 @@ import DeleteBtn from "../components/DeleteBtn";
 import API from "../utils/API";
 import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
-import { Input, TextArea, FormBtn } from "../components/Form";
+import { Input, TextArea } from "../components/Form";
 
-function Books() {
+ function Books() {
     const [books, setBooks] = useState([])
-    const [formObject, setFormObject] = useState({})
+    // const [formObject, setFormObject] = useState({})
 
     useEffect(() => {
         loadBooks()
@@ -45,12 +45,12 @@ function Books() {
                       name="synopsis"
                       placeholder="Synopsis (optional)"
                     />
-                    <FormBtn
-                      disabled={!(formObject.author && formObject.title)}
+                    {/* <FormBtn
+                      disabled={(!formObject.author && formObject.title)}
                       onClick={() => {}}
                     >
                         Submit Book
-                    </FormBtn>
+                    </FormBtn> */}
                 </form>
             </Col>
             <Col size="md-6 sm-12">
