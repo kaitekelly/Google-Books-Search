@@ -46,8 +46,15 @@ export function TextArea(props) {
 
   export function FormBtn(props) {
     return (
+      <div>
       <button type="submit" {...props} style={{ float: "right", marginBottom: 10 }} className="btn btn-success">
         {props.children}
       </button>
+      {result.map(book => (
+        <a target="_blank" href={book.volumeInfo.previewLink}>
+        <img src={book.volumeInfo.imageLinks.thumbnail} alt={book.title}/>
+        </a>
+      ))}
+      </div>
     );
   }
