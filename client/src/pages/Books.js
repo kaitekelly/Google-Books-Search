@@ -7,8 +7,9 @@ import { List, ListItem } from "../components/List";
 import { Input, TextArea } from "../components/Form";
 
  function Books() {
-    const [books, setBooks] = useState([])
-    // const [formObject, setFormObject] = useState({})
+    const [book, setBook] = useState("");
+    const [result, setResult] = useState([]);
+    const [apiKey, setApiKey] =useState("AIzaSyBLtHfDB9X9srVAwMoC7jT8nw1kvm80nMw");
 
     useEffect(() => {
         loadBooks()
@@ -17,7 +18,7 @@ import { Input, TextArea } from "../components/Form";
     function loadBooks() {
         API.getBooks()
          .then(res => 
-            setBooks(res.data)
+            setBook(res.data)
             )
          .catch(err => console.log(err));
     };
@@ -57,14 +58,14 @@ import { Input, TextArea } from "../components/Form";
               <Jumbotron>
                   <h1>Books on My List</h1>
               </Jumbotron>
-              {books.length ? (
+              {book.length ? (
                   <List>
-                    {books.map(book => {
+                    {book.map(book => {
                         return (
-                            <ListItem key={books._id}>
-                          <a href={"/books/" + books._id}>
+                            <ListItem key={book._id}>
+                          <a href={"/books/" + book._id}>
                             <strong>
-                              {books.title} by {books.author}
+                              {book.title} by {book.author}
                             </strong>
                           </a>
                           <DeleteBtn onClick={() => {}} />
