@@ -1,27 +1,55 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Jumbotron from "../components/Jumbotron";
 import DeleteBtn from "../components/DeleteBtn";
-import API from "../utils/API";
+// import API from "../utils/API";
 import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
-import { Input, TextArea } from "../components/Form";
+import { Input, TextArea, FormBtn } from "../components/Form";
+// import axios from "axios";
+require('dotenv').config();
 
  function Books() {
-    const [book, setBook] = useState("");
-    const [result, setResult] = useState([]);
-    const apiKey = process.env.REACT_APP_API_KEY;
+  //react access the api key in the .env
+  // const apiKey = process.env.REACT_APP_API_KEY;
+  
+  // const [book, setBook] = useState("");
+  // const [result, setResult] = useState([]);
+  
+  
+  
+  // function handleChange(event) {
+  //   const book = event.target.value;
+  //   setBook(book);
+  
+  // }
+  
+  // function handleSubmit(event) {
+  //   event.preventDefault();
+  //   console.log(book);
+  
+  //   axios.get("GET https://www.googleapis.com/books/v1/volumes?q=" + book + "&key=" + apiKey)
+  //   .then(data => {
+  //     console.log(data.data.items);
+  //     setResult(data.data.items);
+  //   })
+  // }
 
-    useEffect(() => {
-        loadBooks()
-    }, [])
+  //old code starts
+    // const [book, setBook] = useState("");
+    // const [result, setResult] = useState([]);
+    // const apiKey = process.env.REACT_APP_API_KEY;
 
-    function loadBooks() {
-        API.getBooks()
-         .then(res => 
-            setBook(res.data)
-            )
-         .catch(err => console.log(err));
-    };
+    // useEffect(() => {
+    //     loadBooks()
+    // }, [])
+
+    // function loadBooks() {
+    //     API.getBooks()
+    //      .then(res => 
+    //         setBook(res.data)
+    //         )
+    //      .catch(err => console.log(err));
+    // };
 
     return (
       <Container fluid>
@@ -46,12 +74,9 @@ import { Input, TextArea } from "../components/Form";
                       name="synopsis"
                       placeholder="Synopsis (optional)"
                     />
-                    {/* <FormBtn
-                      disabled={(!formObject.author && formObject.title)}
-                      onClick={() => {}}
-                    >
+                    <FormBtn>
                         Submit Book
-                    </FormBtn> */}
+                    </FormBtn>
                 </form>
             </Col>
             <Col size="md-6 sm-12">

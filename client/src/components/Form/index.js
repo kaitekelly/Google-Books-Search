@@ -1,18 +1,13 @@
 import React from "react";
-import { useState } from "react";
 import axios from "axios";
-// import apiKey from ".env";
-require('dotenv').config();
-//react access the api key in the .env
-// require(process.env.REACT_APP_API_KEY);
-
-
+// import { useState } from "react";
+import book from "../../pages/Books";
+import setBook from "../../pages/Books";
+import result from "../../pages/Books";
+import setResult from "../../pages/Books";
 const apiKey = process.env.REACT_APP_API_KEY;
 
-const [book, setBook] = useState("");
-const [result, setResult] = useState([]);
-
-
+// import apiKey from ".env";
 
 function handleChange(event) {
   const book = event.target.value;
