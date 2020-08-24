@@ -9,7 +9,7 @@ const [apiKey, setApiKey] =useState("AIzaSyBLtHfDB9X9srVAwMoC7jT8nw1kvm80nMw");
 
 function handleChange(event) {
   const book = event.target.value;
-  setBook(book)
+  setBook(book);
 
 }
 
@@ -17,7 +17,11 @@ function handleSubmit(event) {
   event.preventDefault();
   console.log(book);
 
-  axios.get("GET https://www.googleapis.com/books/v1/volumes?q=" + book + "&key=" + apiKey);
+  axios.get("GET https://www.googleapis.com/books/v1/volumes?q=" + book + "&key=" + apiKey)
+  .then(data => {
+    console.log(data.data.items);
+    setResult(data.data.items);
+  })
 }
 
 export function Input(props) {
