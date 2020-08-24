@@ -1,9 +1,13 @@
 import React from "react";
 import { useState } from "react";
 import axios from "axios";
+// import apiKey from ".env";
 require('dotenv').config();
+//react access the api key in the .env
+// require(process.env.REACT_APP_API_KEY);
 
 
+const apiKey = process.env.REACT_APP_API_KEY;
 
 const [book, setBook] = useState("");
 const [result, setResult] = useState([]);

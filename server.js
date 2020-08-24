@@ -5,6 +5,9 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 require('dotenv').config();
 
+//react access the api key in the .env
+process.env.REACT_APP_API_KEY
+
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());

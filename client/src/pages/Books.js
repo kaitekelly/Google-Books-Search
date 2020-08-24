@@ -9,7 +9,7 @@ import { Input, TextArea } from "../components/Form";
  function Books() {
     const [book, setBook] = useState("");
     const [result, setResult] = useState([]);
-    const [apiKey, setApiKey] =useState("AIzaSyBLtHfDB9X9srVAwMoC7jT8nw1kvm80nMw");
+    const apiKey = process.env.REACT_APP_API_KEY;
 
     useEffect(() => {
         loadBooks()
