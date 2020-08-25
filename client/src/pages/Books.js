@@ -48,7 +48,7 @@ require('dotenv').config();
                         Submit Book
                     </FormBtn>
                 </form>
-                {result.length ? (
+                              {result.length ? (
                   <List>
                     {result.map(book => {
                       console.log(JSON.stringify(book, null, 2))
@@ -67,7 +67,13 @@ require('dotenv').config();
               ) : (
                   <h3> No Results to Display</h3>
               )}
+
             </Col>
+            {/* <Col size="md-6 sm-12">
+              <Jumbotron>
+                  <h1>Books on My List</h1>
+              </Jumbotron>
+            </Col> */}
          </Row>
       </Container>
     );
