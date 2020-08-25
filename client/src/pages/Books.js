@@ -6,7 +6,7 @@ import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
 import { Input, FormBtn } from "../components/Form";
 import axios from "axios";
-import API from "../utils/API";
+// import API from "../utils/API";
 require("dotenv").config();
 
 function Books() {
@@ -17,20 +17,20 @@ function Books() {
   const [result, setResult] = useState([]);
   //************************************ */
   useEffect(() => {
-    loadBooks();
+    // loadBooks();
   }, []);
 
-  function loadBooks() {
-    API.getBooks()
-      .then((res) => setBooks(res.data))
-      .catch((err) => console.log(err));
-  }
+  // function loadBooks() {
+  //   API.getBooks()
+  //     .then((res) => setBooks(res.data))
+  //     .catch((err) => console.log(err));
+  // }
 
-  function deleteBook(id) {
-    API.deleteBook(id)
-      .then((res) => loadBooks())
-      .catch((err) => console.log(err));
-  }
+  // function deleteBook(id) {
+  //   API.deleteBook(id)
+  //     .then((res) => loadBooks())
+  //     .catch((err) => console.log(err));
+  // }
 
   //************************************ */
   function handleChange(event) {
@@ -38,9 +38,9 @@ function Books() {
     setBook(book);
   }
  //***************************************/
- function saveBook() {
-   
- }
+//  function saveBook() {
+
+//  }
   //***************************************/
   
 
@@ -81,12 +81,19 @@ function Books() {
               {result.map((book) => {
                 console.log(JSON.stringify(book, null, 2));
                 return (
-                  <ListItem key={book._id}>
-                    <a href={"/books/" + book._id}>
+                  <ListItem key={book.id}>
+                    <a href={"/books/" + book.id}>
                       <strong>
                         {book.volumeInfo.title} by {book.volumeInfo.authors}
                       </strong>
-                    </a>
+                      <p>
+                        {book.volumeInfo.description}
+                      </p>
+                      </a>
+                      <a href={book.volumeInfo.previewLink}>
+                      <img src={book.volumeInfo.imageLinks.thumbnail} alt={book.volumeInfo.title}/>
+                      </a>
+                    
                     <DeleteBtn onClick={() => {}} />
                   </ListItem>
                 );
