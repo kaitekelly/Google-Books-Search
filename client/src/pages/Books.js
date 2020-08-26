@@ -67,7 +67,6 @@ function Books() {
           <Jumbotron>
             <h1>Google Book Search</h1>
           </Jumbotron>
-          <form>
             <Input
               onChange={handleChange}
               onSubmit={handleSubmit}
@@ -75,7 +74,6 @@ function Books() {
               placeholder="Title (required)"
             />
             <FormBtn>Submit Book</FormBtn>
-          </form>
           {result.length ? (
             <List>
               {result.map((book) => {
