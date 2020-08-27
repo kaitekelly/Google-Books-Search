@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import Jumbotron from "../components/Jumbotron";
-import DeleteBtn from "../components/DeleteBtn";
-// import API from "../utils/API";
+// import DeleteBtn from "../components/DeleteBtn";
+import API from "../utils/API";
 import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
 import { Input, FormBtn } from "../components/Form";
 import axios from "axios";
+// import book from "../../../models/book";
 // import API from "../utils/API";
 require("dotenv").config();
 
@@ -13,7 +14,7 @@ function Books() {
   // react access the api key in the .env
   const apiKey = process.env.REACT_APP_API_KEY;
 
-  const [book, setBook] = useState("");
+  const [books, setBooks] = useState("");
   const [result, setResult] = useState([]);
   //************************************ */
   useEffect(() => {
@@ -32,26 +33,22 @@ function Books() {
   //     .catch((err) => console.log(err));
   // }
 
-  //************************************ */
+  //handle change to search google books axios call/
   function handleChange(event) {
     const book = event.target.value;
-    setBook(book);
+    setBooks(book);
   }
- //***************************************/
-//  function saveBook() {
 
-//  }
-  //***************************************/
   
-
+  // api call submit button
   function handleSubmit(event) {
     event.preventDefault();
-    console.log(book);
+    console.log(books);
 
     axios
       .get(
         "https://www.googleapis.com/books/v1/volumes?q=" +
-          book +
+          books +
           "&key=" +
           apiKey
       )
@@ -60,6 +57,24 @@ function Books() {
         setResult(data.data.items);
       });
   }
+
+  //  ***************************************/
+function handleBookSave(index) {
+  console.log(index)
+  console.log(result[index].id)
+  // const book = books.findById(book => book.id === id )
+  API.saveBook({
+    googleId: result[index].id,
+    image: result[index].volumeInfo.imageLinks.thumbnail,
+    title: result[index].volumeInfo.title,
+    authors: result[index].volumeInfo.authors,
+    description: result[index].volumeInfo.description,
+    link: result[index].volumeInfo.previewLink})
+    // .then(res => getBooks())
+    // .then(res => console.log(result))
+    .catch(err => console.log(err))
+}
+  // ***************************************/
   return (
     <Container fluid>
       <Row>
@@ -73,10 +88,13 @@ function Books() {
               name="title"
               placeholder="Title (required)"
             />
-            <FormBtn>Submit Book</FormBtn>
+            <FormBtn
+              // onClick={handleChange}
+              onClick={handleSubmit}
+            >Submit Book</FormBtn>
           {result.length ? (
             <List>
-              {result.map((book) => {
+              {result.map((book, index) => {
                 console.log(JSON.stringify(book, null, 2));
                 return (
                   <ListItem key={book.id}>
@@ -91,8 +109,7 @@ function Books() {
                       <a href={book.volumeInfo.previewLink}>
                       <img src={book.volumeInfo.imageLinks.thumbnail} alt={book.volumeInfo.title}/>
                       </a>
-                    
-                    <DeleteBtn onClick={() => {}} />
+                    <button onClick={ () => handleBookSave(index)}> Save Book to List</button>
                   </ListItem>
                 );
               })}
