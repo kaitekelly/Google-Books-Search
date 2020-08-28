@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from "react";
 import Jumbotron from "../components/Jumbotron";
-// import DeleteBtn from "../components/DeleteBtn";
 import API from "../utils/API";
 import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
 import { Input, FormBtn } from "../components/Form";
 import axios from "axios";
-// import book from "../../../models/book";
-// import API from "../utils/API";
 require("dotenv").config();
 
 function Books() {
@@ -58,7 +55,6 @@ function Books() {
       });
   }
 
-  //  ***************************************/
 function handleBookSave(index) {
   console.log(index)
   console.log(result[index].id)
