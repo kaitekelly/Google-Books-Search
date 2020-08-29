@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
 import { Col, Row, Container } from "../components/Grid";
@@ -13,22 +13,6 @@ function Books() {
 
   const [books, setBooks] = useState("");
   const [result, setResult] = useState([]);
-  //************************************ */
-  useEffect(() => {
-    // loadBooks();
-  }, []);
-
-  // function loadBooks() {
-  //   API.getBooks()
-  //     .then((res) => setBooks(res.data))
-  //     .catch((err) => console.log(err));
-  // }
-
-  // function deleteBook(id) {
-  //   API.deleteBook(id)
-  //     .then((res) => loadBooks())
-  //     .catch((err) => console.log(err));
-  // }
 
   //handle change to search google books axios call/
   function handleChange(event) {
