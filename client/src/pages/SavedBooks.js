@@ -7,6 +7,7 @@ import { Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
 import DeleteBtn from "../components/DeleteBtn";
 // import { Input, FormBtn } from "../components/Form";
+import { Col } from 'react-bootstrap';
 
 function SavedBooks() {
   const [savedBooks, setSavedBooks] = useState([]);
@@ -37,8 +38,10 @@ function SavedBooks() {
   return (
     <div>
       <Jumbotron fluid>
-        <Container>
+        <Container fluid>
+          <Col>
           <h1>Books Saved on My List</h1>
+          </Col>
         </Container>
       </Jumbotron>
       <br></br>
@@ -48,16 +51,22 @@ function SavedBooks() {
         {savedBooks.length ? (
           <List>
             {savedBooks.map((savedBook) => (
+              
               <ListItem key={savedBook._id}>
+
+              <a href={savedBook.link}>
                 <img
                   src={
                     savedBook.image === undefined ? "" : `${savedBook.image}`
                   }
                   alt={savedBook.title}
                 />
+                </a>
                 <strong>
                   {savedBook.title} by {savedBook.authors}
                 </strong>
+                <p className="book-description">{savedBook.description}</p>
+                
                 <br></br>
                 <DeleteBtn onClick={() => deleteBook(savedBook._id)} />
               </ListItem>

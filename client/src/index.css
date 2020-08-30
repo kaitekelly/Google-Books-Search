@@ -15,7 +15,38 @@ code {
 * {
   justify-content: center;
   font-family: 'Raleway', sans-serif;
-  font-size: 12pt;
+  /* font-size: 12pt; */
+  /* background-color: #ABF8FF; */
 }
 
+.search-header {
+  font-size: 48pt;
+  color: #287069;
+  background-color: #35E9F0;
 
+}
+
+.jumbotron {
+  /* padding: 5em inherit; */
+  background-color: #35E9F0;
+  /* height:100vh; */
+  justify-content: center;
+  width: 100%;
+}
+
+.btn {
+  background-color: #287069;
+}
+
+.book-description {
+  background-color: white;
+  float: right;
+}
+
+.book-title {
+  background-color: white;
+}
+
+.navbar {
+  margin-bottom: 0px;
+}

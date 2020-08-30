@@ -60,7 +60,7 @@ function handleBookSave(index) {
       <Row>
         <Col size="md-6">
           <Jumbotron>
-            <h1>Google Book Search</h1>
+            <h1 className="search-header">Google Book Search</h1>
           </Jumbotron>
             <Input
               onChange={handleChange}
@@ -79,9 +79,11 @@ function handleBookSave(index) {
                 return (
                   <ListItem key={book.id}>
                     <a href={"/books/" + book.id}>
+                    <div className="book-title">
                       <strong>
                         {book.volumeInfo.title} by {book.volumeInfo.authors}
                       </strong>
+                      </div>
                       <p>
                         {book.volumeInfo.description}
                       </p>
@@ -93,7 +95,7 @@ function handleBookSave(index) {
         : `${book.volumeInfo.imageLinks.thumbnail}`
   } alt={book.volumeInfo.title}/>
                       </a>
-                    <button onClick={ () => handleBookSave(index)}> Save Book to List</button>
+                    <button onClick={ () => handleBookSave(index)} className="btn"> Save Book to List</button>
                   </ListItem>
                 );
               })}

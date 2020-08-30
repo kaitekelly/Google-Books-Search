@@ -7,9 +7,8 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 // import jQuery from 'jquery';
 require('dotenv').config()
-
-
 require('bootstrap')
+require('react-bootstrap')
 
 ReactDOM.render(
   <React.StrictMode>
