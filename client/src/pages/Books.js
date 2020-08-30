@@ -87,7 +87,11 @@ function handleBookSave(index) {
                       </p>
                       </a>
                       <a href={book.volumeInfo.previewLink}>
-                      <img src={book.volumeInfo.imageLinks.thumbnail} alt={book.volumeInfo.title}/>
+                      <img src={
+      book.volumeInfo.imageLinks === undefined
+        ? ""
+        : `${book.volumeInfo.imageLinks.thumbnail}`
+  } alt={book.volumeInfo.title}/>
                       </a>
                     <button onClick={ () => handleBookSave(index)}> Save Book to List</button>
                   </ListItem>
@@ -98,6 +102,7 @@ function handleBookSave(index) {
             <h3> No Results to Display</h3>
           )}
         </Col>
+  }
         {/* <Col size="md-6 sm-12">
               <Jumbotron>
                   <h1>Books on My List</h1>
