@@ -5,7 +5,7 @@ import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
 import { Input, FormBtn } from "../components/Form";
 import axios from "axios";
-require("dotenv").config();
+// require("dotenv").config();
 
 function Books() {
   // react access the api key in the .env
