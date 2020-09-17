@@ -20,23 +20,28 @@ function Books() {
     setBooks(book);
   }
 
+  const searchGoogleBooks = async () => {
+    await axios
+    .get(
+      "https://www.googleapis.com/books/v1/volumes?q=" +
+        books +
+        "&key=" +
+        apiKey
+    )
+    .then((data) => {
+      // console.log(data.data.items);
+      setResult(data.data.items);
+    }).catch((err) => {
+      console.log(err)
+    });
+  }
   
   // api call submit button
   function handleSubmit(event) {
     event.preventDefault();
-    console.log(books);
-
-    axios
-      .get(
-        "https://www.googleapis.com/books/v1/volumes?q=" +
-          books +
-          "&key=" +
-          apiKey
-      )
-      .then((data) => {
-        console.log(data.data.items);
-        setResult(data.data.items);
-      });
+    console.log(books + "book from handle submit button");
+    searchGoogleBooks();
+    
   }
 
 function handleBookSave(index) {
@@ -52,7 +57,7 @@ function handleBookSave(index) {
     link: result[index].volumeInfo.previewLink})
     // .then(res => getBooks())
     // .then(res => console.log(result))
-    .catch(err => console.log(err))
+    .catch(err => console.log(err));
 }
   // ***************************************/
   return (
