@@ -17,12 +17,6 @@ function SavedBooks() {
     loadBooks();
   }, []);
 
-  // function deleteBook(id) {
-  //   API.deleteBook(id)
-  //     .then(res => API.getSavedBooks())
-  //     .catch(err => console.log(err));
-  // }
-
   function loadBooks() {
     API.getBooks()
       .then((res) => setSavedBooks(res.data))

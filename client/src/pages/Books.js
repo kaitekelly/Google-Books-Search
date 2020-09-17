@@ -59,7 +59,7 @@ function handleBookSave(index) {
     // .then(res => console.log(result))
     .catch(err => console.log(err));
 }
-  // ***************************************/
+
   return (
     <Container fluid>
       <Row>
