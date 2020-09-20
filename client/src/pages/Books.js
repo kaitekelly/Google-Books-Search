@@ -7,7 +7,7 @@ import { Input, FormBtn } from "../components/Form";
 import axios from "axios";
 // require("dotenv").config();
 
-import { Container, Row, Col } from 'reactstrap';
+import { Container, Row, Col } from "reactstrap";
 
 function Books() {
   // react access the api key in the .env
@@ -24,43 +24,44 @@ function Books() {
 
   const searchGoogleBooks = async () => {
     await axios
-    .get(
-      "https://www.googleapis.com/books/v1/volumes?q=" +
-        books +
-        "&key=" +
-        apiKey
-    )
-    .then((data) => {
-      // console.log(data.data.items);
-      setResult(data.data.items);
-    }).catch((err) => {
-      console.log(err)
-    });
-  }
-  
+      .get(
+        "https://www.googleapis.com/books/v1/volumes?q=" +
+          books +
+          "&key=" +
+          apiKey
+      )
+      .then((data) => {
+        // console.log(data.data.items);
+        setResult(data.data.items);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   // api call submit button
   function handleSubmit(event) {
     event.preventDefault();
     console.log(books + "book from handle submit button");
     searchGoogleBooks();
-    
   }
 
-function handleBookSave(index) {
-  console.log(index)
-  console.log(result[index].id)
-  // const book = books.findById(book => book.id === id )
-  API.saveBook({
-    googleId: result[index].id,
-    image: result[index].volumeInfo.imageLinks.thumbnail,
-    title: result[index].volumeInfo.title,
-    authors: result[index].volumeInfo.authors,
-    description: result[index].volumeInfo.description,
-    link: result[index].volumeInfo.previewLink})
-    // .then(res => getBooks())
-    // .then(res => console.log(result))
-    .catch(err => console.log(err));
-}
+  function handleBookSave(index) {
+    console.log(index);
+    console.log(result[index].id);
+    // const book = books.findById(book => book.id === id )
+    API.saveBook({
+      googleId: result[index].id,
+      image: result[index].volumeInfo.imageLinks.thumbnail,
+      title: result[index].volumeInfo.title,
+      authors: result[index].volumeInfo.authors,
+      description: result[index].volumeInfo.description,
+      link: result[index].volumeInfo.previewLink,
+    })
+      // .then(res => getBooks())
+      // .then(res => console.log(result))
+      .catch((err) => console.log(err));
+  }
 
   return (
     <Container fluid>
@@ -69,16 +70,18 @@ function handleBookSave(index) {
           <Jumbotron>
             <h1 className="search-header">Google Book Search</h1>
           </Jumbotron>
-            <Input
-              onChange={handleChange}
-              onSubmit={handleSubmit}
-              name="title"
-              placeholder="Title (required)"
-            />
-            <FormBtn
-              // onClick={handleChange}
-              onClick={handleSubmit}
-            >Submit Book</FormBtn>
+          <Input
+            onChange={handleChange}
+            onSubmit={handleSubmit}
+            name="title"
+            placeholder="Title (required)"
+          />
+          <FormBtn
+            // onClick={handleChange}
+            onClick={handleSubmit}
+          >
+            Submit Book
+          </FormBtn>
           {result.length ? (
             <List>
               {result.map((book, index) => {
@@ -86,23 +89,30 @@ function handleBookSave(index) {
                 return (
                   <ListItem key={book.id}>
                     <a href={"/books/" + book.id}>
-                    <div className="book-title">
-                      <strong>
-                        {book.volumeInfo.title} by {book.volumeInfo.authors}
-                      </strong>
+                      <div className="book-title">
+                        <strong>
+                          {book.volumeInfo.title} by {book.volumeInfo.authors}
+                        </strong>
                       </div>
-                      <p>
-                        {book.volumeInfo.description}
-                      </p>
-                      </a>
-                      <a href={book.volumeInfo.previewLink}>
-                      <img src={
-      book.volumeInfo.imageLinks === undefined
-        ? ""
-        : `${book.volumeInfo.imageLinks.thumbnail}`
-  } alt={book.volumeInfo.title}/>
-                      </a>
-                    <button onClick={ () => handleBookSave(index)} className="btn"> Save Book to List</button>
+                      <p>{book.volumeInfo.description}</p>
+                    </a>
+                    <a href={book.volumeInfo.previewLink}>
+                      <img
+                        src={
+                          book.volumeInfo.imageLinks === undefined
+                            ? ""
+                            : `${book.volumeInfo.imageLinks.thumbnail}`
+                        }
+                        alt={book.volumeInfo.title}
+                      />
+                    </a>
+                    <button
+                      onClick={() => handleBookSave(index)}
+                      className="btn"
+                    >
+                      {" "}
+                      Save Book to List
+                    </button>
                   </ListItem>
                 );
               })}
@@ -111,7 +121,7 @@ function handleBookSave(index) {
             <h3> No Results to Display</h3>
           )}
         </Col>
-  }
+        }
         {/* <Col size="md-6 sm-12">
               <Jumbotron>
                   <h1>Books on My List</h1>
