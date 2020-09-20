@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
-import { Col, Row, Container } from "../components/Grid";
+// import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
 import { Input, FormBtn } from "../components/Form";
 import axios from "axios";
 // require("dotenv").config();
+
+import { Container, Row, Col } from 'reactstrap';
 
 function Books() {
   // react access the api key in the .env

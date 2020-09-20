@@ -1,5 +1,12 @@
-.container {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
+  .btn {
+    background-color: aqua;
+  }
+
+  .saved-book {
+    padding: 10pt;
+    font-size: 18pt;
+  }
+
+  img {
+    padding: 20pt;
   }

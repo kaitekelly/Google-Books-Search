@@ -2,12 +2,14 @@ import React, { useEffect, useState } from "react";
 import Jumbotron from "../components/Jumbotron";
 // import DeleteBtn from "../components/DeleteBtn";
 import API from "../utils/API";
-import { Container } from "../components/Grid";
+// import { Container } from "../components/Grid";
 // import { DeleteBtn } from "../components/Button/Btn";
 import { List, ListItem } from "../components/List";
 import DeleteBtn from "../components/DeleteBtn";
 // import { Input, FormBtn } from "../components/Form";
-import { Col } from 'react-bootstrap';
+// import { Col } from 'react-bootstrap';
+import { Container, Row, Col } from 'reactstrap';
+import "./style.css";
 
 function SavedBooks() {
   const [savedBooks, setSavedBooks] = useState([]);
@@ -31,10 +33,10 @@ function SavedBooks() {
 
   return (
     <div>
-      <Jumbotron fluid>
+      <Jumbotron className="fluid">
         <Container fluid>
           <Col>
-          <h1>Books Saved on My List</h1>
+          <h1>My Saved Books</h1>
           </Col>
         </Container>
       </Jumbotron>
@@ -42,33 +44,38 @@ function SavedBooks() {
       <br></br>
       <Container fluid id="resultsdiv">
         <h2>Saved Books</h2>
+        <Row>
         {savedBooks.length ? (
           <List>
             {savedBooks.map((savedBook) => (
-              
               <ListItem key={savedBook._id}>
-
               <a href={savedBook.link}>
                 <img
                   src={
                     savedBook.image === undefined ? "" : `${savedBook.image}`
                   }
                   alt={savedBook.title}
+                  // className="md"
                 />
                 </a>
-                <strong>
-                  {savedBook.title} by {savedBook.authors}
+                  
+                <strong className="saved-book">
+                  {savedBook.title + "   "} 
+                  by 
+                  {"   " + savedBook.authors}
                 </strong>
+            
                 <p className="book-description">{savedBook.description}</p>
                 
-                <br></br>
                 <DeleteBtn onClick={() => deleteBook(savedBook._id)} />
               </ListItem>
             ))}
+            
           </List>
         ) : (
           <h2>No Books to Display</h2>
         )}
+        </Row>
       </Container>
     </div>
   );
