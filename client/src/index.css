@@ -13,7 +13,7 @@ code {
 }
 
 * {
-  justify-content: center;
+  /* justify-content: center; */
   font-family: 'Raleway', sans-serif;
   /* font-size: 12pt; */
   /* background-color: #ABF8FF; */
@@ -30,7 +30,7 @@ code {
   /* padding: 5em inherit; */
   background-color: #35E9F0;
   /* height:100vh; */
-  justify-content: center;
+  /* justify-content: center; */
   width: 100%;
 }
 

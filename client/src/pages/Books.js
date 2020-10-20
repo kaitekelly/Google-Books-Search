@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
-// import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
 import { Input, FormBtn } from "../components/Form";
 import axios from "axios";
@@ -31,7 +30,6 @@ function Books() {
           apiKey
       )
       .then((data) => {
-        // console.log(data.data.items);
         setResult(data.data.items);
       })
       .catch((err) => {
@@ -39,7 +37,6 @@ function Books() {
       });
   };
 
-  // api call submit button
   function handleSubmit(event) {
     event.preventDefault();
     console.log(books + "book from handle submit button");
@@ -49,7 +46,6 @@ function Books() {
   function handleBookSave(index) {
     console.log(index);
     console.log(result[index].id);
-    // const book = books.findById(book => book.id === id )
     API.saveBook({
       googleId: result[index].id,
       image: result[index].volumeInfo.imageLinks.thumbnail,
@@ -58,8 +54,6 @@ function Books() {
       description: result[index].volumeInfo.description,
       link: result[index].volumeInfo.previewLink,
     })
-      // .then(res => getBooks())
-      // .then(res => console.log(result))
       .catch((err) => console.log(err));
   }
 
@@ -77,7 +71,6 @@ function Books() {
             placeholder="Title (required)"
           />
           <FormBtn
-            // onClick={handleChange}
             onClick={handleSubmit}
           >
             Submit Book
@@ -122,11 +115,7 @@ function Books() {
           )}
         </Col>
         }
-        {/* <Col size="md-6 sm-12">
-              <Jumbotron>
-                  <h1>Books on My List</h1>
-              </Jumbotron>
-            </Col> */}
+     
       </Row>
     </Container>
   );
