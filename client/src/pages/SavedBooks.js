@@ -1,13 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Jumbotron from "../components/Jumbotron";
-// import DeleteBtn from "../components/DeleteBtn";
 import API from "../utils/API";
-// import { Container } from "../components/Grid";
-// import { DeleteBtn } from "../components/Button/Btn";
 import { List, ListItem } from "../components/List";
 import DeleteBtn from "../components/DeleteBtn";
-// import { Input, FormBtn } from "../components/Form";
-// import { Col } from 'react-bootstrap';
 import { Container, Row, Col } from 'reactstrap';
 import "./style.css";
 
