@@ -32,8 +32,8 @@ Enter a book title or an authors name into the Google Book Search bar. When the 
 
 
 # Contributions: 
-Contributor, Kait Kelly. View github profile through badge above. 
-Technology used: Node.js, NPM's(express), HTML, Javascript, CSS
+Contributor, Kaite Kelly. View github profile through badge above. 
+Technology used: React, Node.js, NPM's(express), HTML, Javascript, CSS
 
 # Tests: 
 ⚙️ No tests have been performed on this application. 
