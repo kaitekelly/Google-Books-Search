@@ -4,6 +4,7 @@ import API from "../utils/API";
 import { List, ListItem } from "../components/List";
 import { Input, FormBtn } from "../components/Form";
 import axios from "axios";
+import "./style.css";
 // require("dotenv").config();
 
 import { Container, Row, Col } from "reactstrap";
@@ -58,10 +59,11 @@ function Books() {
   }
 
   return (
+    <div>
     <Container fluid>
       <Row>
         <Col size="md-6">
-          <Jumbotron>
+          <Jumbotron className="fluid">
             <h1 className="search-header">Google Book Search</h1>
           </Jumbotron>
           <Input
@@ -118,6 +120,7 @@ function Books() {
      
       </Row>
     </Container>
+    </div>
   );
 }
 export default Books;

@@ -27,10 +27,10 @@ code {
 } */
 
 .jumbotron {
-  /* padding: 5em inherit; */
+  padding: 5em inherit;
   background-color: #35E9F0;
-  /* height:100vh; */
-  /* justify-content: center; */
+  height:100vh;
+  justify-content: center;
   width: 100%;
 }
 
