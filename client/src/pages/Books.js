@@ -54,72 +54,65 @@ function Books() {
       authors: result[index].volumeInfo.authors,
       description: result[index].volumeInfo.description,
       link: result[index].volumeInfo.previewLink,
-    })
-      .catch((err) => console.log(err));
+    }).catch((err) => console.log(err));
   }
 
   return (
     <div>
-    <Container fluid>
-      <Row>
-        <Col size="md-6">
-          <Jumbotron className="fluid">
-            <h1 className="search-header">Google Book Search</h1>
-          </Jumbotron>
-          <Input
-            onChange={handleChange}
-            onSubmit={handleSubmit}
-            name="title"
-            placeholder="Title (required)"
-          />
-          <FormBtn
-            onClick={handleSubmit}
-          >
-            Submit Book
-          </FormBtn>
-          {result.length ? (
-            <List>
-              {result.map((book, index) => {
-                console.log(JSON.stringify(book, null, 2));
-                return (
-                  <ListItem key={book.id}>
-                    <a href={"/books/" + book.id}>
-                      <div className="book-title">
-                        <strong>
-                          {book.volumeInfo.title} by {book.volumeInfo.authors}
-                        </strong>
-                      </div>
-                      <p>{book.volumeInfo.description}</p>
-                    </a>
-                    <a href={book.volumeInfo.previewLink}>
-                      <img
-                        src={
-                          book.volumeInfo.imageLinks === undefined
-                            ? ""
-                            : `${book.volumeInfo.imageLinks.thumbnail}`
-                        }
-                        alt={book.volumeInfo.title}
-                      />
-                    </a>
-                    <button
-                      onClick={() => handleBookSave(index)}
-                      className="btn"
-                    >
-                      {" "}
-                      Save Book to List
-                    </button>
-                  </ListItem>
-                );
-              })}
-            </List>
-          ) : (
-            <h3> No Results to Display</h3>
-          )}
-        </Col>
-        }
-     
-      </Row>
-    </Container>
+      <Jumbotron className="fluid">
+        <h1 className="search-header">Google Book Search</h1>
+      </Jumbotron>
+      <Container fluid>
+        <Row>
+          <Col size="md-6">
+            <Input
+              onChange={handleChange}
+              onSubmit={handleSubmit}
+              name="title"
+              placeholder="Enter title, author, or keywords (required)"
+            />
+            <FormBtn onClick={handleSubmit}>Search</FormBtn>
+            {result.length ? (
+              <List>
+                {result.map((book, index) => {
+                  console.log(JSON.stringify(book, null, 2));
+                  return (
+                    <ListItem key={book.id}>
+                      <a href={"/books/" + book.id}>
+                        <div className="book-title">
+                          <strong>
+                            {book.volumeInfo.title} by {book.volumeInfo.authors}
+                          </strong>
+                        </div>
+                        <p>{book.volumeInfo.description}</p>
+                      </a>
+                      <a href={book.volumeInfo.previewLink}>
+                        <img
+                          src={
+                            book.volumeInfo.imageLinks === undefined
+                              ? ""
+                              : `${book.volumeInfo.imageLinks.thumbnail}`
+                          }
+                          alt={book.volumeInfo.title}
+                        />
+                      </a>
+                      <button
+                        onClick={() => handleBookSave(index)}
+                        className="btn"
+                      >
+                        {" "}
+                        Save Book to List
+                      </button>
+                    </ListItem>
+                  );
+                })}
+              </List>
+            ) : (
+              <h3> No Results to Display</h3>
+            )}
+          </Col>
+        </Row>
+      </Container>
     </div>
   );
 }

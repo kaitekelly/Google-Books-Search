@@ -27,7 +27,7 @@ app.use(routes);
 
 // Connect to the Mongo DB
 
-mongoose.connect(process.env.MONGODB_URI);
+mongoose.connect(process.env.MONGODB_URI || `mongodb+srv://migration_user:Whitecat11@cluster-n8n7xbb4.nytr9.mongodb.net/<dbname>?retryWrites=true&w=majority`);
 
 // Start the API server
 app.listen(PORT, function() {
