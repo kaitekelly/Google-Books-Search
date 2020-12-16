@@ -27,7 +27,8 @@ app.use(routes);
 
 // Connect to the Mongo DB
 // mongoose.connect(process.env.MONGODB_URI || `mongodb://${dbuser}:${dbpassword}@ds031561.mlab.com:31561/heroku_n8n7xbb4`);
-mongoose.connect(process.env.MONGODB_URI || `mongodb://kaitek:password1@ds031561.mlab.com:31561/heroku_n8n7xbb4`);
+// mongoose.connect(process.env.MONGODB_URI || `mongodb://kaitek:password1@ds031561.mlab.com:31561/heroku_n8n7xbb4`);
+mongoose.connect(process.env.MONGODB_URI || `mongodb+srv://migration_user:Whitecat11@cluster-n8n7xbb4.nytr9.mongodb.net/<dbname>?retryWrites=true&w=majority`);
 
 // Start the API server
 app.listen(PORT, function() {
