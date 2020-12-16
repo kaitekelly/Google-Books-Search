@@ -62,7 +62,7 @@ function Books() {
       <Jumbotron className="fluid">
         <h1 className="search-header">Google Book Search</h1>
       </Jumbotron>
-      <Container fluid>
+      <Container fluid className="search-container">
         <Row>
           <Col size="md-6">
             <Input
