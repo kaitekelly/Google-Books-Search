@@ -38,7 +38,7 @@ function SavedBooks() {
       <br></br>
       <br></br>
       <Container fluid id="resultsdiv">
-        <h2>Saved Books</h2>
+        {/* <h2>Saved Books</h2> */}
         <Row>
         {savedBooks.length ? (
           <List>
