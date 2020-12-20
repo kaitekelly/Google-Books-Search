@@ -37,7 +37,7 @@ function SavedBooks() {
       </Jumbotron>
       <br></br>
       <br></br>
-      <Container fluid id="resultsdiv">
+      <Container fluid="md" id="resultsdiv">
         {/* <h2>Saved Books</h2> */}
         <Row>
         {savedBooks.length ? (

@@ -69,7 +69,7 @@ function Books() {
       <Jumbotron className="fluid">
         <h1 className="search-header">Google Book Search</h1>
       </Jumbotron>
-      <Container fluid className="search-container">
+      <Container fluid="md" className="search-container">
         <Row>
           <Col size="md-6">
             <Input
@@ -91,8 +91,9 @@ function Books() {
                             {book.volumeInfo.title} by {book.volumeInfo.authors}
                           </strong>
                         </div>
-                        <p>{book.volumeInfo.description}</p>
+                        
                       </a>
+                      <p>{book.volumeInfo.description}</p>
                       <a href={book.volumeInfo.previewLink}>
                         <img
                           src={
