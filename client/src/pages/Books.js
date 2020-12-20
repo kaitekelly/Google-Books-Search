@@ -8,6 +8,7 @@ import "./style.css";
 // require("dotenv").config();
 
 import { Container, Row, Col } from "reactstrap";
+// import { is } from "sequelize/types/lib/operators";
 
 function Books() {
   // react access the api key in the .env
@@ -15,11 +16,17 @@ function Books() {
 
   const [books, setBooks] = useState("");
   const [result, setResult] = useState([]);
+  const [isHighlighted, setIsHighlighted] = useState(false);
 
   //handle change to search google books axios call/
   function handleChange(event) {
     const book = event.target.value;
     setBooks(book);
+  }
+
+  // change background color of save button when mouse hovers over it
+  function changeBackground(e) {
+    e.target.style.background = 'red';
   }
 
   const searchGoogleBooks = async () => {
@@ -99,8 +106,14 @@ function Books() {
                       <button
                         onClick={() => handleBookSave(index)}
                         className="btn"
+                        onMouseEnter={() => setIsHighlighted(true)}
+                        onMouseLeave={() => setIsHighlighted(false)}
                       >
-                        {" "}
+                        {isHighlighted && (
+                          <div>
+                            Click now to
+                          </div>
+                        )}
                         Save Book to List
                       </button>
                     </ListItem>
